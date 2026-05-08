@@ -1,4 +1,4 @@
-name: My First Pipeline
+name: Real DevOps Pipeline
 
 on:
   push:
@@ -12,11 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Say Hello
-        run: echo "Hello! Pipeline is running!"
+      - name: Show who pushed the code
+        run: echo "Code pushed by ${{ github.actor }}"
 
-      - name: Show date
-        run: date
+      - name: Show which branch
+        run: echo "Branch is ${{ github.ref }}"
 
-      - name: List files
-        run: ls
+      - name: Show all files in project
+        run: ls -la
+
+      - name: Check disk space on server
+        run: df -h
+
+      - name: Pipeline finished!
+        run: echo "Pipeline completed successfully! 🎉"
